@@ -1,0 +1,56 @@
+api_product_new:
+    path: /product
+    methods:
+        - POST
+    controller: App\Controller\Api\Product\NewAction
+
+api_product_list:
+    path: /product
+    methods:
+        - GET
+    controller: App\Controller\Api\Product\PaginateAction
+
+api_product_single:
+    path: /product/{id}
+    methods:
+        - GET
+    controller: App\Controller\Api\Product\SingleAction
+    requirements:
+        id: '\d+'
+
+api_product_edit:
+    path: /product/{id}
+    methods:
+        - PUT
+    controller: App\Controller\Api\Product\EditAction
+    requirements:
+        id: '\d+'
+
+api_product_patch:
+    path: /product/{id}
+    methods:
+        - PATCH
+    controller: App\Controller\Api\Product\PatchAction
+    requirements:
+        id: '\d+'
+
+api_product_delete:
+    path: /product/{id}
+    methods:
+        - DELETE
+    controller: App\Controller\Api\Product\DeleteAction
+    requirements:
+        id: '\d+'
+
+api_product_add_to_basket:
+    path: /product/{id}/add-to-basket
+    methods:
+        - POST
+    controller: App\Controller\Api\Basket\AddProductAction
+
+
+api_product_remove_from_basket:
+    path: /product/{id}/remove-from-basket
+    methods:
+        - DELETE
+    controller: App\Controller\Api\Basket\RemoveProductAction

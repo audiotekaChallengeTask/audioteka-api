@@ -1,0 +1,10 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+api_product:
+    prefix: /api
+    resource: './api_routes/product.yaml'
+
+api_basket:
+    prefix: /api
+    resource: './api_routes/basket.yaml'

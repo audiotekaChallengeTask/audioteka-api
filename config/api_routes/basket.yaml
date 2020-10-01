@@ -1,0 +1,17 @@
+api_basket_create:
+    path: /basket
+    methods:
+        - POST
+    controller: App\Controller\Api\Basket\NewAction
+
+api_basket_single:
+    path: /basket
+    methods:
+        - GET
+    controller: App\Controller\Api\Basket\SingleAction
+
+api_basket_products:
+    path: /basket/products
+    methods:
+        - GET
+    controller: App\Controller\Api\Basket\ProductsAction

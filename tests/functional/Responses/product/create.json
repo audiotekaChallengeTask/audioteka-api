@@ -1,0 +1,23 @@
+{
+    "id": @integer@,
+    "name": "Product 1",
+    "price": 199.99,
+    "_links": {
+        "self": {
+            "href": "\/api\/product\/@integer@",
+            "method": "GET"
+        },
+        "edit": {
+            "href": "\/api\/product\/@integer@",
+            "method": "PUT"
+        },
+        "patch": {
+            "href": "\/api\/product\/@integer@",
+            "method": "PATCH"
+        },
+        "delete": {
+            "href": "\/api\/product\/@integer@",
+            "method": "DELETE"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "createdAt": "@string@.isDateTime()",
+    "productCount": 1,
+    "amount": 59.99,
+    "_links": {
+        "products": {
+            "href": "\/api\/basket\/products",
+            "method": "GET"
+        }
+    }
+}

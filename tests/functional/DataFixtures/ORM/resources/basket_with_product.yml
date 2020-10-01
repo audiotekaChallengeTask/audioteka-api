@@ -1,0 +1,12 @@
+App\Entity\Basket:
+    basket1:
+        user: user_1
+
+App\Entity\Product:
+    product1:
+        name:  "The Godfather"
+        price: 59.99
+        __calls:
+            - addBasket:
+                0: '@basket1'
+

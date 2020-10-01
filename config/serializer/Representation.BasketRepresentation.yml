@@ -1,0 +1,26 @@
+App\Representation\BasketRepresentation:
+    exclusion_policy: ALL
+    properties:
+        createdAt:
+            accessor:
+                getter: getCreatedAt
+            type: DateTime
+
+        productCount:
+            accessor:
+                getter: getProductCount
+            type: int
+
+        amount:
+            accessor:
+                getter: getAmount
+            type: float
+
+    relations:
+        -   rel: products
+            attributes:
+                method: GET
+            href:
+                method:   GET
+                route:    api_basket_products
+                absolute: false

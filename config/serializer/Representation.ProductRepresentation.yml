@@ -1,0 +1,78 @@
+App\Representation\ProductRepresentation:
+    exclusion_policy: ALL
+    properties:
+        id:
+            accessor:
+                getter: getId
+            type: integer
+
+        name:
+            accessor:
+                getter: getName
+            type: string
+
+        price:
+            accessor:
+                getter: getPrice
+            type: float
+
+    relations:
+        -   rel: self
+            attributes:
+                method: GET
+            href:
+                method:   GET
+                route:    api_product_single
+                parameters:
+                    id: expr(object.getId())
+                absolute: false
+
+        -   rel: edit
+            attributes:
+                method: PUT
+            href:
+                route:    api_product_edit
+                parameters:
+                    id: expr(object.getId())
+                absolute: false
+
+        -   rel: patch
+            attributes:
+                method: PATCH
+            href:
+                route:    api_product_patch
+                parameters:
+                    id: expr(object.getId())
+                absolute: false
+
+        -   rel: delete
+            attributes:
+                method: DELETE
+            href:
+                route:    api_product_delete
+                parameters:
+                    id: expr(object.getId())
+                absolute: false
+
+        -   rel: add_to_basket
+            attributes:
+                method: POST
+            href:
+                route:    api_product_add_to_basket
+                parameters:
+                    id: expr(object.getId())
+                absolute: false
+            exclusion:
+                exclude_if: expr(!is_granted('ADD_PRODUCT_TO_BASKET', object))
+
+
+        -   rel: remove_from_basket
+            attributes:
+                method: DELETE
+            href:
+                route:    api_product_remove_from_basket
+                parameters:
+                    id: expr(object.getId())
+                absolute: false
+            exclusion:
+                exclude_if: expr(!is_granted('REMOVE_PRODUCT_FROM_BASKET', object))

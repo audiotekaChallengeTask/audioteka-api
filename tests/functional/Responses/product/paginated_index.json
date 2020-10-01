@@ -1,0 +1,91 @@
+{
+    "page": 1,
+    "limit": 3,
+    "pages": 2,
+    "total": 6,
+    "resources": [
+        {
+            "id": @integer@,
+            "name": "The Godfather",
+            "price": 59.99,
+            "_links": {
+                "self": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "GET"
+                },
+                "edit": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "PUT"
+                },
+                "patch": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "PATCH"
+                },
+                "delete": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "DELETE"
+                }
+            }
+        },
+        {
+            "id": @integer@,
+            "name": "Steve Jobs",
+            "price": 49.95,
+            "_links": {
+                "self": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "GET"
+                },
+                "edit": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "PUT"
+                },
+                "patch": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "PATCH"
+                },
+                "delete": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "DELETE"
+                }
+            }
+        },
+        {
+            "id": @integer@,
+            "name": "The Return of Sherlock Holmes",
+            "price": 39.99,
+            "_links": {
+                "self": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "GET"
+                },
+                "edit": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "PUT"
+                },
+                "patch": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "PATCH"
+                },
+                "delete": {
+                    "href": "\/api\/product\/@integer@",
+                    "method": "DELETE"
+                }
+            }
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "\/api\/product?page=1&limit=3"
+        },
+        "first": {
+            "href": "\/api\/product?page=1&limit=3"
+        },
+        "last": {
+            "href": "\/api\/product?page=2&limit=3"
+        },
+        "next": {
+            "href": "\/api\/product?page=2&limit=3"
+        }
+    }
+}

@@ -1,0 +1,89 @@
+services:
+    _defaults:
+        autowire:      true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    JMS\Serializer\SerializerInterface:                  '@jms_serializer'
+    App\Transformer\RepresentationTransformer:           ~
+    App\Transformer\RepresentationTransformerRepository: ~
+#    Nelmio\ApiDocBundle\Controller\SwaggerUiController:
+#        arguments:
+#            $generatorLocator: '@nelmio_api_doc.generator_locator'
+#            $twig: '@twig'
+#        tags:
+#            - 'controller.service_arguments'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags:
+            - 'controller.service_arguments'
+
+    App\EventListener\ApiRequestJsonListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request', method: 'onRequest' }
+
+    App\EventListener\StartSessionOnRequestListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request', method: 'onRequest' }
+
+    App\EventListener\ValidationExceptionListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.exception', method: 'onValidationException' }
+
+    App\EventListener\KernelExceptionListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.exception', method: 'onException' }
+
+    App\Transformer\:
+        resource: '../src/Transformer/'
+        exclude:
+            - '../src/Transformer/RepresentationTransformer.php'
+            - '../src/Transformer/RepresentationTransformerRepository.php'
+        tags:
+            - 'api.transformer'
+
+    App\Manager\:
+        resource: '../src/Manager/'
+        exclude:
+            - '../src/Manager/ManagerRepository.php'
+        tags:
+            - 'api.manager'
+
+    App\Provider\:
+        resource: '../src/Provider/'
+        exclude:
+            - '../src/Provider/ProviderRepository.php'
+        tags:
+            - 'api.provider'
+
+    App\Security\Voter\:
+        resource: '../src/Security/Voter/'
+        tags:
+            - 'security.voter'
+
+    App\ArgumentResolver\:
+        resource: '../src/ArgumentResolver/'
+        tags:
+            - { name: 'controller.argument_value_resolver', priority: 50 }
+
+    App\Command\LoadFixturesCommand:
+        arguments:
+            $loader: '@fidry_alice_data_fixtures.doctrine.persister_loader'
+            $rootDir: '%kernel.project_dir%'
+        tags:
+            - 'console.command'
+
+    gedmo.listener.softdeleteable:
+        class: Gedmo\SoftDeleteable\SoftDeleteableListener
+        tags:
+            - { name: 'doctrine.event_subscriber', connection: 'default' }
+        calls:
+            - [ 'setAnnotationReader', [ "@annotation_reader" ] ]

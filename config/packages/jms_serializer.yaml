@@ -1,0 +1,21 @@
+jms_serializer:
+    handlers:
+        datetime:
+            default_format:   "Y-m-d\\TH:i:sP" # ATOM
+            default_timezone: "UTC"
+    default_context:
+        serialization:
+            groups:         ~
+            serialize_null: true
+    metadata:
+        cache:          file
+        debug:          "%kernel.debug%"
+        file_cache:
+            dir: "%kernel.cache_dir%/serializer"
+        auto_detection: false
+        directories:
+            App:
+                namespace_prefix: 'App'
+                path:             "%kernel.project_dir%/config/serializer/"
+    property_naming:
+        id: jms_serializer.identical_property_naming_strategy
